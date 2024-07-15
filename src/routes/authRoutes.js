@@ -1,5 +1,6 @@
 import express from "express"
 import * as authController from "../controllers/authController.js"
+import { authLimiter } from "../middleware/rateLimitMiddleware.js"
 
 const router = express.Router()
 
@@ -60,6 +61,6 @@ router.post("/signup", authController.signUp)
  *       401:
  *         description: Invalid credentials
  */
-router.post("/login", authController.login)
+router.post("/login", authLimiter, authController.login)
 
 export default router

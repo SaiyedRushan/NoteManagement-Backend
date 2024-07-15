@@ -1,6 +1,7 @@
 import express from "express"
 import * as noteController from "../controllers/noteController.js"
 import { authenticate } from "../middleware/authMiddleware.js"
+import { createNoteLimiter } from "../middleware/rateLimitMiddleware.js"
 
 const router = express.Router()
 
@@ -139,7 +140,7 @@ router.get("/:id", noteController.getNoteById)
  *       400:
  *         description: Bad request
  */
-router.post("/", noteController.createNote)
+router.post("/", createNoteLimiter, noteController.createNote)
 
 /**
  * @swagger
