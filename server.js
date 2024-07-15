@@ -1,14 +1,16 @@
-import { config } from "dotenv"
 import express from "express"
-config()
+import routes from "./src/routes/index.js"
+import connectDB from "./src/config/database.js"
+import config from "./config.js"
 
 const app = express()
-const port = process.env.PORT || 8080
+const port = config.PORT || 8080
 
-app.get("/", (req, res) => {
-  res.send("Hello World!")
-})
+connectDB()
+
+app.use(express.json())
+app.get("/api", routes)
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Server listening on port ${port}`)
 })
