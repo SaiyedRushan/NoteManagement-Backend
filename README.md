@@ -34,6 +34,10 @@ This project implements a secure and scalable RESTful API for managing notes. Us
 
 - Swagger/OpenAPI documentation can be accessed at the `/api-docs` endpoint.
 
+### CICD pipeline
+
+- **GitHub Actions**: Used for continuous integration and deployment. The workflow includes automated tests, builds, and deployment.
+
 ## Setup Instructions
 
 ### Prerequisites
